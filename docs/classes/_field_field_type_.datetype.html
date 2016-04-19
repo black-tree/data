@@ -1,0 +1,450 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>DateType | WhiteAndGray JavaScript Data Library</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<script src="../assets/js/modernizr.js"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">WhiteAndGray JavaScript Data Library</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_field_field_type_.html">&quot;field/field-type&quot;</a>
+				</li>
+				<li>
+					<a href="_field_field_type_.datetype.html">DateType</a>
+				</li>
+			</ul>
+			<h1>Class DateType</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Field type for the date data type. The conversion methods of this type
+							accept the <a href="../interfaces/_field_field_type_.datetypeoptions.html">DateTypeOptions</a> extension of the [[TypeOptions]] that allows
+							specifying the format that should be used for parsing raw values and
+							for serializing Date objects back into strings. This class also implements
+							the optional method <a href="_field_field_type_.datetype.html#valuesareequal">valuesAreEqual</a> that should be used by value change
+						detectors to decide whether a value has really changed.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<a href="_field_field_type_.basefieldtype.html" class="tsd-signature-type">BaseFieldType</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">DateType</span>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../interfaces/_field_field_type_.fieldtype.html" class="tsd-signature-type">FieldType</a></li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_field_field_type_.datetype.html#convertrawvalue" class="tsd-kind-icon">convert<wbr>Raw<wbr>Value</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="_field_field_type_.datetype.html#converttotype" class="tsd-kind-icon">convert<wbr>ToType</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_field_field_type_.datetype.html#getdefaultoptions" class="tsd-kind-icon">get<wbr>Default<wbr>Options</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_field_field_type_.datetype.html#serializevalue" class="tsd-kind-icon">serialize<wbr>Value</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_field_field_type_.datetype.html#valuesareequal" class="tsd-kind-icon">values<wbr>Are<wbr>Equal</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="convertrawvalue" class="tsd-anchor"></a>
+					<h3>convert<wbr>Raw<wbr>Value</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">convert<wbr>Raw<wbr>Value<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_field_field_type_.fieldtypeoptions.html" class="tsd-signature-type">FieldTypeOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_field_field_type_.fieldtype.html">FieldType</a>.<a href="../interfaces/_field_field_type_.fieldtype.html#convertrawvalue">convertRawValue</a></p>
+								<p>Inherited from <a href="_field_field_type_.basefieldtype.html">BaseFieldType</a>.<a href="_field_field_type_.basefieldtype.html#convertrawvalue">convertRawValue</a></p>
+								<ul>
+									<li>Defined in field/field-type.ts:42</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>options: <a href="../interfaces/_field_field_type_.fieldtypeoptions.html" class="tsd-signature-type">FieldTypeOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+					<a name="converttotype" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> convert<wbr>ToType</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">convert<wbr>ToType<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_field_field_type_.fieldtypeoptions.html" class="tsd-signature-type">FieldTypeOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overwrites <a href="_field_field_type_.basefieldtype.html">BaseFieldType</a>.<a href="_field_field_type_.basefieldtype.html#converttotype">convertToType</a></p>
+								<ul>
+									<li>Defined in field/field-type.ts:128</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">any</span></h5>
+								</li>
+								<li>
+									<h5>options: <a href="../interfaces/_field_field_type_.fieldtypeoptions.html" class="tsd-signature-type">FieldTypeOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<a name="getdefaultoptions" class="tsd-anchor"></a>
+					<h3>get<wbr>Default<wbr>Options</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Default<wbr>Options<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_field_field_type_.fieldtypeoptions.html" class="tsd-signature-type">FieldTypeOptions</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Implementation of <a href="../interfaces/_field_field_type_.fieldtype.html">FieldType</a>.<a href="../interfaces/_field_field_type_.fieldtype.html#getdefaultoptions">getDefaultOptions</a></p>
+								<p>Overwrites <a href="_field_field_type_.basefieldtype.html">BaseFieldType</a>.<a href="_field_field_type_.basefieldtype.html#getdefaultoptions">getDefaultOptions</a></p>
+								<ul>
+									<li>Defined in field/field-type.ts:155</li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_field_field_type_.fieldtypeoptions.html" class="tsd-signature-type">FieldTypeOptions</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<a name="serializevalue" class="tsd-anchor"></a>
+					<h3>serialize<wbr>Value</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+						<li class="tsd-signature tsd-kind-icon">serialize<wbr>Value<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Date</span>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_field_field_type_.datetypeoptions.html" class="tsd-signature-type">DateTypeOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overwrites <a href="_field_field_type_.basefieldtype.html">BaseFieldType</a>.<a href="_field_field_type_.basefieldtype.html#serializevalue">serializeValue</a></p>
+								<ul>
+									<li>Defined in field/field-type.ts:139</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Converts a Date instance into a string, in the format specified by the
+									options parameter.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">Date</span></h5>
+								</li>
+								<li>
+									<h5>options: <a href="../interfaces/_field_field_type_.datetypeoptions.html" class="tsd-signature-type">DateTypeOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="valuesareequal" class="tsd-anchor"></a>
+					<h3>values<wbr>Are<wbr>Equal</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">values<wbr>Are<wbr>Equal<span class="tsd-signature-symbol">(</span>value1<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Date</span>, value2<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in field/field-type.ts:150</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Test whether two Date instances should be considered as the same value.
+									Will return true if both instances correspond to the same date.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value1: <span class="tsd-signature-type">Date</span></h5>
+								</li>
+								<li>
+									<h5>value2: <span class="tsd-signature-type">Date</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_adapter_adapter_.html">"adapter/adapter"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_adapter_http_adapter_.html">"adapter/http-<wbr>adapter"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_adapter_memory_adapter_.html">"adapter/memory-<wbr>adapter"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_event_dispatcher_.html">"event/dispatcher"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_event_event_.html">"event/event"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_field_field_.html">"field/field"</a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/_field_field_type_.html">"field/field-<wbr>type"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_model_field_configurator_.html">"model/field-<wbr>configurator"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_model_metadata_.html">"model/metadata"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_model_model_.html">"model/model"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_model_model_data_.html">"model/model-<wbr>data"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_reader_json_reader_.html">"reader/json-<wbr>reader"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_reader_reader_.html">"reader/reader"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_serializer_json_serializer_.html">"serializer/json-<wbr>serializer"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_serializer_serializer_.html">"serializer/serializer"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_store_store_.html">"store/store"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_utils_collection_.html">"utils/collection"</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_field_field_type_.anytype.html" class="tsd-kind-icon">Any<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_field_field_type_.basefieldtype.html" class="tsd-kind-icon">Base<wbr>Field<wbr>Type</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_field_field_type_.datetype.html" class="tsd-kind-icon">Date<wbr>Type</a>
+						<ul>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+								<a href="_field_field_type_.datetype.html#convertrawvalue" class="tsd-kind-icon">convert<wbr>Raw<wbr>Value</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
+								<a href="_field_field_type_.datetype.html#converttotype" class="tsd-kind-icon">convert<wbr>ToType</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_field_field_type_.datetype.html#getdefaultoptions" class="tsd-kind-icon">get<wbr>Default<wbr>Options</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+								<a href="_field_field_type_.datetype.html#serializevalue" class="tsd-kind-icon">serialize<wbr>Value</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_field_field_type_.datetype.html#valuesareequal" class="tsd-kind-icon">values<wbr>Are<wbr>Equal</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_field_field_type_.numbertype.html" class="tsd-kind-icon">Number<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_field_field_type_.stringtype.html" class="tsd-kind-icon">String<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_field_field_type_.datetypeoptions.html" class="tsd-kind-icon">Date<wbr>Type<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_field_field_type_.fieldtype.html" class="tsd-kind-icon">Field<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_field_field_type_.fieldtypeoptions.html" class="tsd-kind-icon">Field<wbr>Type<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/_field_field_type_.html#datetypedefaultoptions" class="tsd-kind-icon">date<wbr>Type<wbr>Default<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module">
+						<a href="../modules/_field_field_type_.html#fieldtypes" class="tsd-kind-icon">Field<wbr>Types</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module">
+						<a href="../modules/_field_field_type_.html#defaultfieldtypeoptions" class="tsd-kind-icon">default<wbr>Field<wbr>Type<wbr>Options</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.io" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
