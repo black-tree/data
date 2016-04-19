@@ -3,7 +3,7 @@ import {ModelPrototype} from "../model/model";
 import {DataChangedEvent, DataCommittedEven} from "../model/model-data";
 import {Event} from "../event/event";
 import {EventDispatcher} from "../event/dispatcher";
-import {BatchOperationResult, Adapter, OperationResult} from "../adapter/adapter";
+import {BatchOperationResult, Adapter, OperationResult, ReadOperationResult} from "../adapter/adapter";
 import {Metadata} from "../model/metadata";
 
 /**
@@ -65,6 +65,43 @@ export class Store<ModelClass> {
     this.scheduledForDeletion = new Set<ModelClass>();
 
     this.eventDispatcher = new EventDispatcher();
+
+    if (config.data) {
+      this.loadModels(config.data);
+    }
+  }
+
+  /**
+   * Loads models into this store from the associated backend using the adapter
+   * this store has been configured with
+   * @param options
+   * @return {Promise<ModelClass[]>}
+   * @throws Error if the store has not been configured with an [[Adapter]]
+   */
+  load(options:any):Promise<ModelClass[]> {
+    if (!this.adapter) {
+      throw new Error('This store cannot load data without being configured ' +
+        'with an adapter');
+    }
+    this.models.clear();
+    return this.adapter.read(options).then((result:ReadOperationResult) => {
+      return this.loadModels(result.data);
+    });
+  }
+
+  /**
+   * Loads the specified data into this store
+   * @param models
+   * @return {ModelClass[]}
+   */
+  loadModels(models:any[]):Array<ModelClass> {
+    let added = this.models.addItems(this.ensureModels(models)).items;
+    this.bindAddedModels(added);
+    this.eventDispatcher.dispatchEvent(<ModelsLoadedEvent>{
+      name: 'models-loaded',
+      models: added
+    });
+    return added;
   }
 
   /**
@@ -111,6 +148,11 @@ export class Store<ModelClass> {
     return deleted;
   }
 
+  /**
+   * Synchronizes the store with the associated backend through the [[Adapter]]
+   * configured for this store.
+   * @return {Promise<BatchOperationResult>|Promise}
+   */
   synchronize():Promise<BatchOperationResult> {
     var batch = this.getSynchronizationBatch();
     let syncPromise = this.adapter.sync(batch);
@@ -146,6 +188,14 @@ export class Store<ModelClass> {
    */
   getAdapter():Adapter {
     return this.adapter;
+  }
+
+  on(event:string, listener:Function) {
+    this.eventDispatcher.on(event, listener);
+  }
+
+  off(event:string, listener:Function) {
+    this.eventDispatcher.off(event, listener);
   }
 
   /**
@@ -441,6 +491,19 @@ export interface ModelsAddedEvent<ModelClass> extends Event {
    */
   models:ModelClass[];
 
+}
+
+/**
+ * Dispatched by a [[Store]] when its models have been loaded, either using the
+ * configured [[Adapter]] via a call to [[Store.load|load()]] or loading local data
+ * via a call to [[Store.loadModels|loadModels()]].
+ */
+export interface ModelsLoadedEvent<ModelClass> extends Event {
+
+  /**
+   * The models loaded into the store
+   */
+  models:ModelClass[];
 }
 
 /**

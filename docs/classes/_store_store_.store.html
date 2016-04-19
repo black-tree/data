@@ -110,7 +110,6 @@
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_store_store_.store.html#adapter" class="tsd-kind-icon">adapter</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_store_store_.store.html#eventdispatcher" class="tsd-kind-icon">event<wbr>Dispatcher</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_store_store_.store.html#modelclass" class="tsd-kind-icon">model<wbr>Class</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_store_store_.store.html#modelobservationsuspended" class="tsd-kind-icon">model<wbr>Observation<wbr>Suspended</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_store_store_.store.html#models" class="tsd-kind-icon">models</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_store_store_.store.html#scheduledfordeletion" class="tsd-kind-icon">scheduled<wbr>For<wbr>Deletion</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_store_store_.store.html#scheduledforinsertion" class="tsd-kind-icon">scheduled<wbr>For<wbr>Insertion</a></li>
@@ -137,6 +136,8 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_store_store_.store.html#handlesynchronizationresult" class="tsd-kind-icon">handle<wbr>Synchronization<wbr>Result</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_store_store_.store.html#handleupdateresult" class="tsd-kind-icon">handle<wbr>Update<wbr>Result</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_store_store_.store.html#ismodel" class="tsd-kind-icon">is<wbr>Model</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_store_store_.store.html#load" class="tsd-kind-icon">load</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_store_store_.store.html#loadmodels" class="tsd-kind-icon">load<wbr>Models</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_store_store_.store.html#onmodeldatachanged" class="tsd-kind-icon">on<wbr>Model<wbr>Data<wbr>Changed</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_store_store_.store.html#onmodeldatacommitted" class="tsd-kind-icon">on<wbr>Model<wbr>Data<wbr>Committed</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_store_store_.store.html#setaddedmodelsstate" class="tsd-kind-icon">set<wbr>Added<wbr>Models<wbr>State</a></li>
@@ -160,7 +161,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:54</li>
+									<li>Defined in store/store.ts:52</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -206,7 +207,7 @@
 					<div class="tsd-signature tsd-kind-icon">event<wbr>Dispatcher<span class="tsd-signature-symbol">:</span> <a href="_event_dispatcher_.eventdispatcher.html" class="tsd-signature-type">EventDispatcher</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in store/store.ts:54</li>
+							<li>Defined in store/store.ts:52</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -252,16 +253,6 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="modelobservationsuspended" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> model<wbr>Observation<wbr>Suspended</h3>
-					<div class="tsd-signature tsd-kind-icon">model<wbr>Observation<wbr>Suspended<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in store/store.ts:31</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="models" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> models</h3>
 					<div class="tsd-signature tsd-kind-icon">models<span class="tsd-signature-symbol">:</span> <a href="_utils_collection_.collection.html" class="tsd-signature-type">Collection</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ModelClass</span><span class="tsd-signature-symbol">&gt;</span></div>
@@ -282,7 +273,7 @@
 					<div class="tsd-signature tsd-kind-icon">scheduled<wbr>For<wbr>Deletion<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Set</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ModelClass</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in store/store.ts:49</li>
+							<li>Defined in store/store.ts:47</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -298,7 +289,7 @@
 					<div class="tsd-signature tsd-kind-icon">scheduled<wbr>For<wbr>Insertion<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Set</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ModelClass</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in store/store.ts:37</li>
+							<li>Defined in store/store.ts:35</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -314,7 +305,7 @@
 					<div class="tsd-signature tsd-kind-icon">scheduled<wbr>For<wbr>Update<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Set</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ModelClass</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in store/store.ts:43</li>
+							<li>Defined in store/store.ts:41</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -337,7 +328,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:80</li>
+									<li>Defined in store/store.ts:110</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -367,7 +358,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:161</li>
+									<li>Defined in store/store.ts:194</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -398,7 +389,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:173</li>
+									<li>Defined in store/store.ts:206</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -429,7 +420,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:100</li>
+									<li>Defined in store/store.ts:130</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -458,7 +449,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:266</li>
+									<li>Defined in store/store.ts:296</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -487,7 +478,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:281</li>
+									<li>Defined in store/store.ts:311</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -515,7 +506,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:152</li>
+									<li>Defined in store/store.ts:185</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -537,7 +528,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:256</li>
+									<li>Defined in store/store.ts:286</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -559,7 +550,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:357</li>
+									<li>Defined in store/store.ts:385</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="_model_metadata_.metadata.html" class="tsd-signature-type">Metadata</a></h4>
@@ -576,7 +567,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:301</li>
+									<li>Defined in store/store.ts:331</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -598,7 +589,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:141</li>
+									<li>Defined in store/store.ts:174</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -622,7 +613,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:350</li>
+									<li>Defined in store/store.ts:378</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -648,7 +639,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:317</li>
+									<li>Defined in store/store.ts:347</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -674,7 +665,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:305</li>
+									<li>Defined in store/store.ts:335</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -697,7 +688,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:128</li>
+									<li>Defined in store/store.ts:163</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -723,7 +714,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:330</li>
+									<li>Defined in store/store.ts:359</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -752,7 +743,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:293</li>
+									<li>Defined in store/store.ts:323</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -771,6 +762,68 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="load" class="tsd-anchor"></a>
+					<h3>load</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">load<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ModelClass</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in store/store.ts:81</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Loads models into this store from the associated backend using the adapter
+									this store has been configured with</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>{Error} if the store has not been configured with an <a href="../interfaces/_adapter_adapter_.adapter.html">Adapter</a></p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ModelClass</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="loadmodels" class="tsd-anchor"></a>
+					<h3>load<wbr>Models</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">load<wbr>Models<span class="tsd-signature-symbol">(</span>models<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ModelClass</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in store/store.ts:97</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Loads the specified data into this store</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>models: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ModelClass</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a name="onmodeldatachanged" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> on<wbr>Model<wbr>Data<wbr>Changed</h3>
@@ -781,7 +834,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:191</li>
+									<li>Defined in store/store.ts:224</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -813,7 +866,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:202</li>
+									<li>Defined in store/store.ts:232</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -836,7 +889,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:210</li>
+									<li>Defined in store/store.ts:240</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -866,9 +919,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:117</li>
+									<li>Defined in store/store.ts:152</li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Synchronizes the store with the associated backend through the <a href="../interfaces/_adapter_adapter_.adapter.html">Adapter</a>
+									configured for this store.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_adapter_adapter_.batchoperationresult.html" class="tsd-signature-type">BatchOperationResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
@@ -883,7 +942,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:182</li>
+									<li>Defined in store/store.ts:215</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -913,7 +972,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in store/store.ts:224</li>
+									<li>Defined in store/store.ts:254</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1014,9 +1073,6 @@
 								<a href="_store_store_.store.html#modelclass" class="tsd-kind-icon">model<wbr>Class</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_store_store_.store.html#modelobservationsuspended" class="tsd-kind-icon">model<wbr>Observation<wbr>Suspended</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="_store_store_.store.html#models" class="tsd-kind-icon">models</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
@@ -1079,6 +1135,12 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_store_store_.store.html#ismodel" class="tsd-kind-icon">is<wbr>Model</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_store_store_.store.html#load" class="tsd-kind-icon">load</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_store_store_.store.html#loadmodels" class="tsd-kind-icon">load<wbr>Models</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="_store_store_.store.html#onmodeldatachanged" class="tsd-kind-icon">on<wbr>Model<wbr>Data<wbr>Changed</a>
 							</li>
@@ -1115,6 +1177,9 @@
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="../interfaces/_store_store_.modelsdestroyedevent.html" class="tsd-kind-icon">Models<wbr>Destroyed<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="../interfaces/_store_store_.modelsloadedevent.html" class="tsd-kind-icon">Models<wbr>Loaded<wbr>Event</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
 						<a href="../interfaces/_store_store_.modelssavedevent.html" class="tsd-kind-icon">Models<wbr>Saved<wbr>Event</a>
