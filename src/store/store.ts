@@ -95,7 +95,12 @@ export class Store<ModelClass> {
    * @return {ModelClass[]}
    */
   loadModels(models:any[]):Array<ModelClass> {
+    let oldModels = this.getAll();
+    this.models.clear();
+    oldModels.forEach(model => this.unbindModelListeners(model));
+    
     let added = this.models.addItems(this.ensureModels(models)).items;
+
     this.bindAddedModels(added);
     this.eventDispatcher.dispatchEvent(<ModelsLoadedEvent>{
       name: 'models-loaded',
