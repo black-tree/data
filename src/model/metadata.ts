@@ -24,6 +24,10 @@ export class Metadata {
     fields.push(this.getIdField());
     return fields;
   }
+  
+  addField(field:Field) {
+    this.fields.push(field);
+  }
 
   getIdField():Field {
     if (!this.idField) {
