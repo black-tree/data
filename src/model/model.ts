@@ -87,7 +87,7 @@ export function declareModel(Class:Function, options:ModelDefinition):void {
 
   let prototype = Class.prototype;
 
-  if (prototype.hasOwnProperty('_metadata_')) {
+  if (prototype.hasOwnProperty('modelAspect')) {
     throw new Error(`Class ${Class.name} has already been defined as a model`);
   }
 
@@ -100,6 +100,9 @@ export function declareModel(Class:Function, options:ModelDefinition):void {
   Object.defineProperty(prototype, 'modelAspect', <PropertyDescriptor>{
     enumerable: false,
     get: function () {
+      if (this === prototype) {
+        return null;
+      }
       let data = new ModelData(this);
       let modelAspect = new ModelAspect(this, data);
       Object.defineProperty(this, 'modelAspect', <PropertyDescriptor>{
