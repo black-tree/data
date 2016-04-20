@@ -22,6 +22,15 @@ describe('Store', () => {
 
   });
 
+  it('loads the indicated models', () => {
+    let store = new Store<FooModel>({modelClass:FooModel});
+
+    store.loadModels([{bar: 'x'}, {bar: 'y'}, {bar: 'z'}]);
+
+    let models = store.getAll();
+    expect(models.length).toEqual(3);
+  });
+
   it('creates model instances from raw objects when adding them to the store', () => {
     let store = new Store<FooModel>({modelClass: FooModel});
     let added = store.add({})[0];
