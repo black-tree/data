@@ -1,5 +1,5 @@
 import {declareModel, Model, ModelAspect} from "../../../src/model/model";
-import {Store} from "../../../src/store/store";
+import {Store, ModelChangedEvent} from "../../../src/store/store";
 import {DataChangedEvent, ValueChange} from "../../../src/model/model-data";
 import {FieldTypes} from "../../../src/field/field-type";
 import {MemoryAdapter} from "../../../src/adapter/memory-adapter";
@@ -29,6 +29,25 @@ describe('Store', () => {
 
     let models = store.getAll();
     expect(models.length).toEqual(3);
+  });
+
+
+  it('removes listeners attached to previous models when loading new data', () => {
+    let store = new Store<FooModel>({modelClass:FooModel});
+
+    store.loadModels([{bar: 'x'}, {bar: 'y'}, {bar: 'z'}]);
+
+    let oldModels = store.getAll();
+    let listenerCalled = false;
+
+    store.on('model-changed', (e:ModelChangedEvent) => {
+      listenerCalled = true;
+    });
+
+    store.loadModels([]);
+    oldModels[0].bar += 'x';
+
+    expect(listenerCalled).toBeFalsy();
   });
 
   it('creates model instances from raw objects when adding them to the store', () => {
