@@ -20,10 +20,16 @@ export class DefaultFieldConfigurator implements FieldConfigurator{
         configurable: true,
       
         get: function() {
+          if (this === modelPrototype) {
+            return undefined;
+          }
           let model = <Model>this;
           return model.modelAspect.data.getValue(fieldName);
         },
         set: function(value) {
+          if (this === modelPrototype) {
+            return;
+          }
           let model = <Model>this;
           model.modelAspect.data.setValue(fieldName, value);
         }
