@@ -82,7 +82,7 @@ export function createMetadata(options:MetadataDefinition):Metadata {
 
 export interface MetadataDefinition {
 
-  fields:(Field|FieldDefinition)[];
+  fields?:(Field|FieldDefinition)[];
 
   fieldConfigurator?:string|FieldConfigurator;
 
@@ -90,6 +90,8 @@ export interface MetadataDefinition {
 }
 
 export var metadataDefinitionDefaults = {
+  
+  fields: [],
   
   fieldConfigurator: 'default',
 
