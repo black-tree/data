@@ -102,7 +102,7 @@ export class Store<ModelClass> {
     let added = this.models.addItems(this.ensureModels(models)).items;
 
     this.bindAddedModels(added);
-    this.eventDispatcher.dispatchEvent(<ModelsLoadedEvent>{
+    this.eventDispatcher.dispatchEvent(<ModelsLoadedEvent<ModelClass>>{
       name: 'models-loaded',
       models: added
     });
