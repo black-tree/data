@@ -50,7 +50,7 @@ export function Field(options:FieldDecoratorOptions = {}) {
   }
 }
 
-let fieldRegistry = new Map<any[]>();
+let fieldRegistry:Map<any, any[]> = new Map<any, any[]>();
 
 /**
  * The options that can be passed to the [[Field]] decorator
