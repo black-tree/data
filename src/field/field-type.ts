@@ -116,6 +116,24 @@ export class NumberType extends BaseFieldType {
 }
 
 /**
+ * The field type for the boolean data type
+ */
+export class BooleanType extends BaseFieldType {
+
+  protected convertToType(value:any, options:FieldTypeOptions):boolean {
+    return !!value;
+  }
+
+  /**
+   *
+   * @inheritdoc
+   */
+  serializeValue(value:number, options:FieldTypeOptions):number {
+    return value;
+  }
+}
+
+/**
  * Field type for the date data type. The conversion methods of this type
  * accept the [[DateTypeOptions]] extension of the [[TypeOptions]] that allows
  * specifying the format that should be used for parsing raw values and
@@ -220,5 +238,6 @@ export var FieldTypes = {
   any: new AnyType(),
   string: new StringType(),
   number: new NumberType(),
+  boolean: new BooleanType(),
   date: new DateType()
 };
