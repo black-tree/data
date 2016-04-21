@@ -1,5 +1,6 @@
 import {Metadata, MetadataDefinition, createMetadata} from "./metadata";
 import {ModelData} from "./model-data";
+import {Field} from "../field/field";
 
 export interface ModelPrototype {
 
@@ -97,6 +98,10 @@ export function declareModel(Class:Function, options:ModelDefinition):void {
   metadata.setModelClass(Class);
   metadata.getFieldConfigurator().configureFields(Class.prototype, fields);
 
+  if (options.injectModelApi) {
+    injectModelApi(Class);
+  }
+
   Object.defineProperty(prototype, 'modelAspect', <PropertyDescriptor>{
     enumerable: false,
     get: function () {
@@ -114,6 +119,27 @@ export function declareModel(Class:Function, options:ModelDefinition):void {
       return modelAspect;
     }
   });
+}
+
+export interface ModelClass {
+
+  getFields():Field[];
+
+}
+
+export function injectModelApi(ModelClass:any) {
+
+  let type = typeof ModelClass;
+  if (type !== 'function') {
+    throw new Error(`Expected argument of type 'function', but got argument ` +
+      `of type ${type}`);
+  }
+
+  let modelPrototype:ModelPrototype = ModelClass.prototype;
+
+  ModelClass.getFields = function() {
+    return modelPrototype._modelMetadata_.getFields();
+  }
 }
 
 export type ModelDefinition = MetadataDefinition;
