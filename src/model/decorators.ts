@@ -13,9 +13,11 @@ import {Metadata} from "./metadata";
 export function Model(options:ModelDefinition = {}) {
   
   return (Target) => {
-
-    if (fieldRegistry.has(Target.prototype)){
-      options.fields = fieldRegistry.get(Target.prototype);
+    let modelPrototype = Target.prototype;
+    options.fields = options.fields || [];
+    if (modelPrototype.__fields__){
+      options.fields.push(...modelPrototype.__fields__);
+      delete modelPrototype.__fields__;
     }
     declareModel(Target, options);
     return Target;
@@ -40,17 +42,15 @@ export function Field(options:FieldDecoratorOptions = {}) {
       metadata.addField(FieldFactory.create(definition));
     } else {
 
-      let fields = fieldRegistry.get(modelPrototype);
+      let fields = (<any>modelPrototype).__fields__;
       if (!fields) {
         fields = [];
-        fieldRegistry.set(modelPrototype, fields);
+        (<any>modelPrototype).__fields__ = fields;
       }
       fields.push(field);
     }
   }
 }
-
-let fieldRegistry:Map<any, any[]> = new Map<any, any[]>();
 
 /**
  * The options that can be passed to the [[Field]] decorator
