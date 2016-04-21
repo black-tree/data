@@ -1,4 +1,4 @@
-import {Field, FieldDefinition, createField} from "../field/field";
+import {Field, FieldDefinition, FieldFactory} from "../field/field";
 import {FieldConfigurator, FieldConfigurators} from "./field-configurator";
 
 export class Metadata {
@@ -31,7 +31,7 @@ export class Metadata {
 
   getIdField():Field {
     if (!this.idField) {
-      this.idField = createField({name: 'id'});
+      this.idField = FieldFactory.create({name: 'id'});
     }
     return this.idField;
   }
@@ -68,7 +68,7 @@ export function createMetadata(options:MetadataDefinition):Metadata {
   let metadata = new Metadata();
   let fields = [];
   options.fields.forEach(field => {
-    fields.push(createField(field));
+    fields.push(FieldFactory.create(field));
   });
   
   metadata.setFields(fields);

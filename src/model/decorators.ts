@@ -1,5 +1,5 @@
 import {declareModel, ModelPrototype, ModelDefinition} from "./model";
-import {createField, FieldDefinition} from "../field/field";
+import {FieldFactory, FieldDefinition} from "../field/field";
 import {FieldType, FieldTypeOptions} from "../field/field-type";
 import {Metadata} from "./metadata";
 
@@ -34,10 +34,10 @@ export function Field(options:FieldDecoratorOptions = {}) {
     let definition:FieldDefinition = Object.assign({name: propertyName}, options);
     let metadata:Metadata = modelPrototype._modelMetadata_;
 
-    let field = createField(definition);
+    let field = FieldFactory.create(definition);
     
     if (metadata) {
-      metadata.addField(createField(definition));
+      metadata.addField(FieldFactory.create(definition));
     } else {
 
       let fields = fieldRegistry.get(modelPrototype);
