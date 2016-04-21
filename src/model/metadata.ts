@@ -87,6 +87,8 @@ export interface MetadataDefinition {
   fieldConfigurator?:string|FieldConfigurator;
 
   idFieldName?:string;
+
+  injectModelApi?:boolean;
 }
 
 export var metadataDefinitionDefaults = {
@@ -95,7 +97,8 @@ export var metadataDefinitionDefaults = {
   
   fieldConfigurator: 'default',
 
-  idFieldName: 'id'
+  idFieldName: 'id',
+
+  injectModelApi: false
 
 };
-
