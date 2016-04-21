@@ -39,20 +39,22 @@ export class Field {
   }
 }
 
-export function createField(options:FieldDefinition|Field):Field {
+export class FieldFactory {
   
-  if (Field.prototype.isPrototypeOf(options)) {
-    return <any>options;
+  static create(options:FieldDefinition|Field):Field {
+    if (Field.prototype.isPrototypeOf(options)) {
+      return <any>options;
+    }
+  
+    let definition:FieldDefinition = Object.assign({}, defaultFieldOptions, options);
+    if (typeof definition.type === 'string') {
+      definition.type = FieldTypes[<string>definition.type];
+    }
+  
+    let field = new Field(definition.name, <FieldType>definition.type);
+    field.setTypeOptions(definition.typeOptions);
+    return field;
   }
-  
-  let definition:FieldDefinition = Object.assign({}, defaultFieldOptions, options);
-  if (typeof definition.type === 'string') {
-    definition.type = FieldTypes[<string>definition.type];
-  }
-  
-  let field = new Field(definition.name, <FieldType>definition.type);
-  field.setTypeOptions(definition.typeOptions);
-  return field;
 }
 
 export interface FieldDefinition {
