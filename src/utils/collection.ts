@@ -68,7 +68,7 @@ export class Collection<T> {
     return this.items.lastIndexOf(item);
   }
 
-  find(callback):T {
+  find(callback:Function):T {
     for (let item of this.items) {
       if (callback(item)) {
         return item;
@@ -77,7 +77,7 @@ export class Collection<T> {
     return undefined;
   }
 
-  findIndex(callback):number {
+  findIndex(callback:Function):number {
     let ii = this.items.length;
     let i = 0;
     for (; i < ii; i++) {
