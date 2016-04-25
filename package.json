@@ -8,7 +8,7 @@
   ],
   "license": "CC0-1.0",
   "author": "Rubén Maguregui <ruben.maguregui@gmail.com>",
-  "main": "dist/main.js",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/WhiteAndGray/data.git"
@@ -50,7 +50,8 @@
   },
   "jspm": {
     "dependencies": {
-      "aurelia-http-client": "npm:aurelia-http-client@^1.0.0-beta.1.2.0"
+      "aurelia-http-client": "npm:aurelia-http-client@^1.0.0-beta.1.2.0",
+      "wg-events": "npm:wg-events@^1.0.0"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",

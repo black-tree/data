@@ -1,6 +1,3 @@
-import {EventDispatcher} from "../event/dispatcher";
-import {Event} from "../event/event";
-
 export class Collection<T> {
 
   protected items:T[];
@@ -123,97 +120,6 @@ export class Collection<T> {
   }
 }
 
-export class ObservableCollection<T> extends Collection<T> {
-
-  private dispatcher:EventDispatcher;
-
-  private resetting:boolean;
-
-  constructor(items:T[] = []) {
-    super(items);
-    this.dispatcher = new EventDispatcher();
-  }
-
-
-  setItems(items:T[]) {
-    let oldItems = this.items;
-    this.resetting = true;
-    super.setItems(items);
-    this.resetting = false;
-    if (oldItems) {
-      this.dispatchItemsSetEvent(oldItems, this.getItems());
-    }
-  }
-
-  addItems(items:T[], position?:number):ItemsInsertion<T> {
-    let insertions = super.addItems(items, position);
-    if (!this.resetting) {
-      this.dispatchItemsAddedEvent(insertions.items);
-    }
-    return insertions;
-  }
-
-  deleteItems(items:T[]):any[] {
-    let deleted = super.deleteItems(items);
-    this.dispatchItemsDeletedEvent(deleted);
-    return deleted;
-  }
-
-
-  clear():void {
-    let oldItems = this.getItems();
-    super.clear();
-    if (!this.resetting) {
-      this.dispatchItemsClearedEvent(oldItems);
-    }
-  }
-  
-  on(event:string, listener:Function) {
-    this.dispatcher.on(event, listener);
-  }
-  
-  off(event:string, listener:Function) {
-    this.dispatcher.off(event, listener);
-  }
-
-  private dispatchItemsAddedEvent(items:T[]) {
-    if (items.length) {
-      this.dispatcher.dispatchEvent(<ItemsAddedEvent<T>>{
-        name: 'items-added',
-        items: items,
-        collection: this
-      });
-    }
-  }
-
-  private dispatchItemsDeletedEvent(items:T[]) {
-    if (items.length) {
-      this.dispatcher.dispatchEvent(<ItemsDeletedEvent<T>>{
-        name: 'items-deleted',
-        items: items,
-        collection: this
-      });
-    }
-  }
-
-  private dispatchItemsSetEvent(oldItems:T[], newItems:T[]) {
-    this.dispatcher.dispatchEvent(<ItemsSetEvent<T>>{
-      name: 'items-set',
-      newItems: newItems,
-      oldItems: oldItems,
-      collection: this
-    });
-  }
-
-  private dispatchItemsClearedEvent(oldItems:T[]) {
-    this.dispatcher.dispatchEvent(<ItemsClearedEvent<T>>{
-      name: 'items-cleared',
-      oldItems: oldItems,
-      collection: this
-    });
-  }
-}
-
 export class ItemsInsertion<T> {
 
   items:T[];
@@ -228,38 +134,4 @@ export class ItemsInsertion<T> {
   get newAdded():boolean {
     return !!this.items.length;
   }
-}
-
-export interface ItemsAddedEvent<T> extends Event {
-
-  items:any[];
-
-  collection:ObservableCollection<T>;
-
-}
-
-export interface ItemsDeletedEvent<T> extends Event {
-
-  items:any[];
-
-  collection:ObservableCollection<T>;
-
-}
-
-export interface ItemsSetEvent<T> extends Event {
-
-  oldItems:any[];
-
-  newItems:any[];
-
-  collection:ObservableCollection<T>;
-
-}
-
-export interface ItemsClearedEvent<T> extends Event {
-
-  oldItems:any[];
-
-  collection:ObservableCollection<T>;
-
 }

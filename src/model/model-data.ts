@@ -1,25 +1,29 @@
-import {EventDispatcher} from "../event/dispatcher";
-import {Event} from "../event/event";
+import {IEvent, IEventDispatcher, EventDispatcher} from "wg-events";
 
 /**
  * Holds and manages the persistence state of a model instance data
  */
-export class ModelData extends EventDispatcher{
+export class ModelData implements IEventDispatcher{
 
   /**
    * The values of this data, indexed by name
    */
-  private values:{[s:string]: DataValue};
+  private values:{[s:string]: DataValue} = {};
 
   /**
    * The set of all dirty values, indexed by name
    */
-  private dirty:{[s:string]:DataValue};
+  private dirty:{[s:string]:DataValue} = {};
 
   /**
    * The model whose data is managed by this ModelData instance
    */
   private model;
+
+  /**
+   * Used to dispatch events
+   */
+  private eventDispatcher = new EventDispatcher(this);
 
   /**
    * Creates a new ModelData instance for the specified model, optionally
@@ -28,10 +32,8 @@ export class ModelData extends EventDispatcher{
    * @param values
    */
   constructor(model, values:{[s:string]: any} = {}) {
-    super();
-    this.values = {};
-    this.dirty = {};
     this.model = model;
+
     Object.getOwnPropertyNames(values).forEach(prop => {
       this.values[prop] = new DataValue(prop, values[prop]);
     });
@@ -198,12 +200,33 @@ export class ModelData extends EventDispatcher{
   }
   
   private dispatchDataCommittedEvent(committed:string[]) {
-    this.dispatchEvent(<DataCommittedEven>{
+    this.dispatchEvent(<DataCommittedEvent>{
       name:'data-committed',
       properties: committed,
       data: this,
       model: this.model
     });
+  }
+
+
+  addEventListener(event:string, listener:Function):any {
+    this.eventDispatcher.addEventListener(event, listener);
+  }
+
+  on(event:string, listener:Function):any {
+    this.eventDispatcher.on(event, listener);
+  }
+
+  removeEventListener(event:string, listener:Function):any {
+    this.eventDispatcher.removeEventListener(event, listener);
+  }
+
+  off(event:string, listener:Function):any {
+    this.eventDispatcher.off(event, listener);
+  }
+
+  dispatchEvent(event:string|IEvent):any {
+    this.eventDispatcher.dispatchEvent(event);
   }
 }
 
@@ -371,7 +394,7 @@ export interface ValueChange {
 /**
  * Dispatched when one ore more values of a [[ModelData]] has changed
  */
-export interface DataChangedEvent extends Event{
+export interface DataChangedEvent extends IEvent{
 
   /**
    * The collection of changes that the data underwent
@@ -390,7 +413,7 @@ export interface DataChangedEvent extends Event{
   
 }
 
-export interface DataCommittedEven extends Event {
+export interface DataCommittedEvent extends IEvent {
   
   properties:string[];
   

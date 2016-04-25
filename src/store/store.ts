@@ -1,16 +1,15 @@
 import {Collection} from "../utils/collection";
 import {ModelPrototype} from "../model/model";
-import {DataChangedEvent, DataCommittedEven} from "../model/model-data";
-import {Event} from "../event/event";
-import {EventDispatcher} from "../event/dispatcher";
+import {DataChangedEvent, DataCommittedEvent} from "../model/model-data";
 import {BatchOperationResult, Adapter, OperationResult, ReadOperationResult} from "../adapter/adapter";
 import {Metadata} from "../model/metadata";
+import {EventDispatcher, IEvent, IEventDispatcher} from "wg-events";
 
 /**
  * Manages a collection of models of a specific type. It is configured with an
  * adapter in order to maintain the store in sync with a backend
  */
-export class Store<ModelClass> {
+export class Store<ModelClass> implements IEventDispatcher{
   
   /**
    * The model class (i.e. the constructor for models of the type managed by 
@@ -195,8 +194,21 @@ export class Store<ModelClass> {
     return this.adapter;
   }
 
+
+  addEventListener(event:string, listener:Function) {
+    this.eventDispatcher.addEventListener(event, listener);
+  }
+
+  dispatchEvent(event:string|IEvent) {
+    this.eventDispatcher.dispatchEvent(event);
+  }
+
   on(event:string, listener:Function) {
     this.eventDispatcher.on(event, listener);
+  }
+
+  removeEventListener(event:string, listener:Function) {
+    this.eventDispatcher.removeEventListener(event, listener);
   }
 
   off(event:string, listener:Function) {
@@ -246,7 +258,7 @@ export class Store<ModelClass> {
     });
   };
 
-  private onModelDataCommitted = (e:DataCommittedEven) => {
+  private onModelDataCommitted = (e:DataCommittedEvent) => {
     this.updateModelState(e.model);
   };
 
@@ -476,7 +488,7 @@ export class SynchronizationBatch<ModelClass> {
 /**
  * Dispatched by a [[Store]] when one of its models has been modified
  */
-export interface ModelChangedEvent<ModelClass> extends Event {
+export interface ModelChangedEvent<ModelClass> extends IEvent {
   
   /**
    * The store's model that has been modified
@@ -489,7 +501,7 @@ export interface ModelChangedEvent<ModelClass> extends Event {
  * Dispatched by a [[Store]] when one or more model instances have been added
  * to the store
  */
-export interface ModelsAddedEvent<ModelClass> extends Event {
+export interface ModelsAddedEvent<ModelClass> extends IEvent {
   
   /**
    * The models that were added to the store
@@ -503,7 +515,7 @@ export interface ModelsAddedEvent<ModelClass> extends Event {
  * configured [[Adapter]] via a call to [[Store.load|load()]] or loading local data
  * via a call to [[Store.loadModels|loadModels()]].
  */
-export interface ModelsLoadedEvent<ModelClass> extends Event {
+export interface ModelsLoadedEvent<ModelClass> extends IEvent {
 
   /**
    * The models loaded into the store
@@ -517,7 +529,7 @@ export interface ModelsLoadedEvent<ModelClass> extends Event {
  * the models have also been deleted in the associated backend, usually after
  * synchronizing the store that had some models deleted.
  */
-export interface ModelsDeletedEvent<ModelClass> extends Event {
+export interface ModelsDeletedEvent<ModelClass> extends IEvent {
   
   /**
    * The models deleted from the store
@@ -530,7 +542,7 @@ export interface ModelsDeletedEvent<ModelClass> extends Event {
  * Dispatched by a [[Store]] when one or more of its models have been saved in
  * the associated backend.
  */
-export interface ModelsSavedEvent<ModelClass> extends Event {
+export interface ModelsSavedEvent<ModelClass> extends IEvent {
   
   /**
    * The models that were updated
@@ -548,7 +560,7 @@ export interface ModelsSavedEvent<ModelClass> extends Event {
  * Dispatched when one or more of a [[Store]] models have been deleted in the
  * associated backend. 
  */
-export interface ModelsDestroyedEvent<ModelClass> extends Event {
+export interface ModelsDestroyedEvent<ModelClass> extends IEvent {
   
   /**
    * The models whose corresponding resource was deleted in the [[Store]] 
