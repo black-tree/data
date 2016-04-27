@@ -1,4 +1,4 @@
-import {Collection} from "../utils/collection";
+import {Collection, SearchCriteria} from "../utils/collection";
 import {ModelPrototype} from "../model/model";
 import {DataChangedEvent, DataCommittedEvent} from "../model/model-data";
 import {BatchOperationResult, Adapter, OperationResult, ReadOperationResult} from "../adapter/adapter";
@@ -123,7 +123,7 @@ export class Store<ModelClass> implements IEventDispatcher{
     let added = this.models.addItems(this.ensureModels(modelOrModels)).items;
     this.bindAddedModels(added);
     this.eventDispatcher.dispatchEvent(<ModelsAddedEvent<ModelClass>>{
-      name: 'models-added',
+      name: Store.events.MODELS_ADDED,
       models: added
     });
     return added;
@@ -152,6 +152,22 @@ export class Store<ModelClass> implements IEventDispatcher{
     return deleted;
   }
 
+  findById(id:any):ModelClass {
+    let idField = this.getMetadata().getIdFieldName();
+    return this.findOneBy((model) => id === model[idField]);
+  }
+
+  findOneBy(criteria:SearchCriteria):ModelClass {
+    return this.models.findOneBy(criteria);
+  }
+
+  findBy(criteria:SearchCriteria):ModelClass[] {
+    return this.models.findBy(criteria);
+  }
+
+  findAt(position:number):ModelClass {
+    return this.models.getAt(position);
+  }
   /**
    * Synchronizes the store with the associated backend through the [[Adapter]]
    * configured for this store.
@@ -253,7 +269,7 @@ export class Store<ModelClass> implements IEventDispatcher{
   private onModelDataChanged = (e:DataChangedEvent) => {
     this.updateModelState(e.model);
     this.eventDispatcher.dispatchEvent(<ModelChangedEvent<ModelClass>>{
-      name: 'model-changed',
+      name: Store.events.MODEL_CHANGED,
       model: e.model
     });
   };
@@ -414,6 +430,15 @@ export class Store<ModelClass> implements IEventDispatcher{
   private getMetadata():Metadata {
     return this.getModelPrototype()._modelMetadata_;
   }
+  
+  static events = {
+    MODELS_ADDED: 'models-added',
+    MODEL_CHANGED: 'model-changed',
+    MODELS_LOADED: 'models-loaded',
+    MODELS_DELETED: 'models-deleted',
+    MODELS_DESTROYED: 'models-destroyed',
+    MODELS_SAVED: 'models-saved'
+  };
 }
 
 /**
