@@ -66,7 +66,7 @@ export class Store<ModelClass> implements IEventDispatcher{
     this.eventDispatcher = new EventDispatcher();
 
     if (config.data) {
-      this.loadModels(config.data);
+      this.setData(config.data);
     }
   }
 
@@ -84,7 +84,7 @@ export class Store<ModelClass> implements IEventDispatcher{
     }
     this.models.clear();
     return this.adapter.read(options).then((result:ReadOperationResult) => {
-      return this.loadModels(result.data);
+      return this.setData(result.data);
     });
   }
 
@@ -93,7 +93,7 @@ export class Store<ModelClass> implements IEventDispatcher{
    * @param models
    * @return {ModelClass[]}
    */
-  loadModels(models:any[]):Array<ModelClass> {
+  setData(models:any[]):Array<ModelClass> {
     let oldModels = this.getAll();
     this.models.clear();
     oldModels.forEach(model => this.unbindModelListeners(model));
@@ -102,7 +102,7 @@ export class Store<ModelClass> implements IEventDispatcher{
 
     this.bindAddedModels(added);
     this.eventDispatcher.dispatchEvent(<ModelsLoadedEvent<ModelClass>>{
-      name: 'models-loaded',
+      name: 'data-loaded',
       models: added
     });
     return added;
@@ -434,7 +434,7 @@ export class Store<ModelClass> implements IEventDispatcher{
   static events = {
     MODELS_ADDED: 'models-added',
     MODEL_CHANGED: 'model-changed',
-    MODELS_LOADED: 'models-loaded',
+    DATA_LOADED: 'data-loaded',
     MODELS_DELETED: 'models-deleted',
     MODELS_DESTROYED: 'models-destroyed',
     MODELS_SAVED: 'models-saved'
