@@ -7,7 +7,9 @@ export interface Filter {
 
 export abstract class AbstractFilter {
 
-  abstract matches(item:any):boolean;
+  matches(item:any):boolean {
+    throw new Error('Method must be implemented by derived classes');
+  }
 
   toCallback():(item:any) => boolean {
     return (item) => this.matches(item);
@@ -15,10 +17,9 @@ export abstract class AbstractFilter {
 }
 
 export class CallbackFilter extends AbstractFilter implements Filter{
-  
-  matches:(item:any) => boolean;
-  
+
   constructor(matches:(item:any)=>boolean) {
+    super();
     this.matches = matches;
   }
   
@@ -29,6 +30,7 @@ export class FilterChain extends AbstractFilter implements Filter{
   filters:Filter[];
   
   constructor(filters:Filter[] = []) {
+    super();
     this.filters = filters.slice(0);
   }
   
@@ -69,6 +71,7 @@ export class PropertyMatchFilter extends AbstractFilter implements Filter{
   private filter:FilterChain;
 
   constructor(matchSpecs:PropertyMatchSpecification[]) {
+    super();
     this.matchSpecs = [];
     for (let criterion of matchSpecs) {
       this.matchSpecs.push(Object.assign({operator: '='}, criterion));
@@ -97,9 +100,8 @@ export class PropertyMatchFilter extends AbstractFilter implements Filter{
 
 export class PropertyMatcher extends AbstractFilter implements Filter{
   
-  matches:(subject:any) => boolean;
-  
   constructor(spec:PropertyMatchSpecification) {
+    super();
     let matches;
     let value = spec.value;
     let prop = spec.property;
