@@ -22,20 +22,30 @@ describe('Store', () => {
 
   });
 
-  it('loads the indicated models', () => {
+  it('sets its data through the setData method', () => {
     let store = new Store<FooModel>({modelClass:FooModel});
 
-    store.loadModels([{bar: 'x'}, {bar: 'y'}, {bar: 'z'}]);
+    store.setData([{bar: 'x'}, {bar: 'y'}, {bar: 'z'}]);
 
     let models = store.getAll();
     expect(models.length).toEqual(3);
+  });
+
+  it('dispatches the data-loaded event when setting new data', () => {
+    let store = new Store<FooModel>({modelClass:FooModel});
+    let dispatched = false;
+
+    store.on(Store.events.DATA_LOADED, () => dispatched = true);
+    store.setData([{bar: 'x'}]);
+
+    expect(dispatched).toBeTruthy();
   });
 
 
   it('removes listeners attached to previous models when loading new data', () => {
     let store = new Store<FooModel>({modelClass:FooModel});
 
-    store.loadModels([{bar: 'x'}, {bar: 'y'}, {bar: 'z'}]);
+    store.setData([{bar: 'x'}, {bar: 'y'}, {bar: 'z'}]);
 
     let oldModels = store.getAll();
     let listenerCalled = false;
@@ -44,7 +54,7 @@ describe('Store', () => {
       listenerCalled = true;
     });
 
-    store.loadModels([]);
+    store.setData([]);
     oldModels[0].bar += 'x';
 
     expect(listenerCalled).toBeFalsy();
