@@ -101,9 +101,9 @@ export class Store<ModelClass> implements IEventDispatcher{
     let added = this.models.addItems(this.ensureModels(models)).items;
 
     this.bindAddedModels(added);
-    this.eventDispatcher.dispatchEvent(<ModelsLoadedEvent<ModelClass>>{
+    this.eventDispatcher.dispatchEvent(<DataLoadedEvent<ModelClass>>{
       name: 'data-loaded',
-      models: added
+      data: added
     });
     return added;
   }
@@ -540,12 +540,12 @@ export interface ModelsAddedEvent<ModelClass> extends IEvent {
  * configured [[Adapter]] via a call to [[Store.load|load()]] or loading local data
  * via a call to [[Store.loadModels|loadModels()]].
  */
-export interface ModelsLoadedEvent<ModelClass> extends IEvent {
+export interface DataLoadedEvent<ModelClass> extends IEvent {
 
   /**
    * The models loaded into the store
    */
-  models:ModelClass[];
+  data:ModelClass[];
 }
 
 /**
