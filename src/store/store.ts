@@ -249,8 +249,8 @@ export class Store<ModelClass> implements IEventDispatcher{
    * @param model
    */
   private bindModelListeners(model:any) {
-    model.modelAspect.data.on('data-changed', this.onModelDataChanged);
-    model.modelAspect.data.on('data-committed', this.onModelDataCommitted);
+    model.modelAspect.on('data-changed', this.onModelDataChanged);
+    model.modelAspect.on('data-committed', this.onModelDataCommitted);
   }
 
   /**
@@ -258,8 +258,8 @@ export class Store<ModelClass> implements IEventDispatcher{
    * @param model
    */
   private unbindModelListeners(model:any) {
-    model.modelAspect.data.off('data-changed', this.onModelDataChanged);
-    model.modelAspect.data.on('data-committed', this.onModelDataCommitted);
+    model.modelAspect.off('data-changed', this.onModelDataChanged);
+    model.modelAspect.on('data-committed', this.onModelDataCommitted);
   }
 
   /**
