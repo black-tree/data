@@ -8,7 +8,7 @@
   ],
   "license": "CC0-1.0",
   "author": "Rubén Maguregui <ruben.maguregui@gmail.com>",
-  "main": "dist/index.js",
+  "main": "dist/bt-data.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/black-tree/data.git"
@@ -53,6 +53,7 @@
     "registry": "jspm",
     "jspmPackage": true,
     "format": "amd",
+    "main": "dist/bt-data.js",
     "directories": {
       "lib": "dist"
     },
