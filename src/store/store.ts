@@ -4,6 +4,7 @@ import {DataChangedEvent, DataCommittedEvent} from "../model/model-data";
 import {BatchOperationResult, Adapter, OperationResult, ReadOperationResult} from "../adapter/adapter";
 import {Metadata} from "../model/metadata";
 import {EventDispatcher, IEvent, IEventDispatcher} from "wg-events";
+import {Instantiator, PrototypeInjectionInstantiator} from "../utils/instantiator";
 
 /**
  * Manages a collection of models of a specific type. It is configured with an
@@ -49,7 +50,14 @@ export class Store<ModelClass> implements IEventDispatcher{
    * The event dispatcher used for dispatching this store events
    */
   private eventDispatcher:EventDispatcher;
-  
+
+  /**
+   * The [[Instantiator]] to use for creating model instances
+   */
+  private instantiator:Instantiator;
+
+  private static defaultInstantiator = new PrototypeInjectionInstantiator();
+
   /**
    * Creates a new store configured with the provided options
    * @param config
@@ -58,6 +66,7 @@ export class Store<ModelClass> implements IEventDispatcher{
 
     this.modelClass = config.modelClass;
     this.adapter = config.adapter;
+    this.instantiator = config.instantiator || Store.defaultInstantiator;
     this.models = new Collection<ModelClass>();
     this.scheduledForInsertion = new Set<ModelClass>();
     this.scheduledForUpdate = new Set<ModelClass>();
@@ -340,7 +349,8 @@ export class Store<ModelClass> implements IEventDispatcher{
    */
   private ensureModel(object:any):ModelClass {
     if (!this.isModel(object)) {
-      object = Object.assign(new this.modelClass(), object);
+      object = Object.assign(
+        this.instantiator.instantiate(this.modelClass), object);
       // When an object has been materialized as a model through the store,
       // it should not be dirty:
       object.modelAspect.commit();
@@ -462,6 +472,11 @@ export interface StoreConfig {
    */
   data?:any[];
 
+  /**
+   * An implementation of the [[Instantiator]] interface that will be used
+   * to create model instances from raw objects
+   */
+  instantiator?:Instantiator;
 }
 
 /**
