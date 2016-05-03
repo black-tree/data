@@ -1,6 +1,9 @@
 import {Metadata, MetadataDefinition, createMetadata} from "./metadata";
 import {ModelData} from "./model-data";
 import {Field} from "../field/field";
+import {IEventDispatcher} from "wg-events";
+import {IEvent} from "wg-events";
+import {EventManager} from "wg-events";
 
 export interface ModelPrototype {
 
@@ -14,17 +17,21 @@ export interface Model {
   
 }
 
-export class ModelAspect {
+export class ModelAspect implements IEventDispatcher{
   
   private _data:ModelData;
   
   private _model:Model;
 
   private _id:number;
+
+  private em:EventManager = new EventManager(this);
   
   constructor(model:Model, data:ModelData) {
     this._model = model;
     this._data = data;
+    
+    this.em.forwardEvents(data, ['data-changed', 'data-committed']);
   }
   
   getMetadata():Metadata {
@@ -55,7 +62,27 @@ export class ModelAspect {
     let id = this.model[this.getMetadata().getIdFieldName()];
     return (id !== null && id !== undefined && id !== '');
   }
-  
+
+  addEventListener(event:string, listener:Function) {
+    this.em.addEventListener(event, listener);
+  }
+
+  on(event:string, listener:Function):any {
+    this.em.on(event, listener);
+  }
+
+  removeEventListener(event:string, listener:Function) {
+    this.em.removeEventListener(event, listener);
+  }
+
+  off(event:string, listener:Function) {
+    this.em.off(event, listener);
+  }
+
+  dispatchEvent(event:string|IEvent) {
+    this.em.dispatchEvent(event);
+  }
+
   get data():ModelData {
     return this._data;
   }
