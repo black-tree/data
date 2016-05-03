@@ -32,7 +32,7 @@ export function Model(options:ModelDefinition = {}) {
  */
 export function Field(options:FieldDecoratorOptions = {}) {
 
-  return (modelPrototype:ModelPrototype, propertyName) => {
+  return (modelPrototype:any, propertyName) => {
     let definition:FieldDefinition = Object.assign({name: propertyName}, options);
     let metadata:Metadata = modelPrototype._modelMetadata_;
 
