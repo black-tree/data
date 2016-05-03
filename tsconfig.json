@@ -11,6 +11,7 @@
     "noResolve": true,
     "removeComments": true,
     "noLib": false,
+    "outFile": "dist/bt-data.js",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },
