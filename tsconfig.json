@@ -6,7 +6,7 @@
     "sourceMap": true,
     "target": "es5",
     "module": "amd",
-    "declaration": true,
+    "declaration": false,
     "noImplicitAny": false,
     "noResolve": true,
     "removeComments": true,
