@@ -7,6 +7,7 @@ var paths = require('../paths');
 var assign = Object.assign || require('object.assign');
 var notify = require('gulp-notify');
 var typescript = require('gulp-tsb');
+var dtsGenerator = require('dts-generator');
 
 // transpiles changed es6 files to SystemJS format
 // the plumber() call prevents 'pipe breaking' caused
@@ -23,6 +24,14 @@ gulp.task('build-system', function() {
     .pipe(typescriptCompiler())
     .pipe(sourcemaps.write({includeContent: false, sourceRoot: '/src'}))
     .pipe(gulp.dest(paths.output));
+});
+
+gulp.task('generate-dts', function(){
+  console.log(dtsGenerator.default({
+    project: '.',
+    name: 'bt-data',
+    out: 'dist/bt-data.d.ts'
+  }));
 });
 
 // this task calls the clean task (located
