@@ -56,7 +56,7 @@ export class Store<ModelClass> implements IEventDispatcher{
    */
   private instantiator:Instantiator;
 
-  private static defaultInstantiator = new PrototypeInjectionInstantiator();
+  static defaultInstantiator = new PrototypeInjectionInstantiator();
 
   /**
    * Creates a new store configured with the provided options
