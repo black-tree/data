@@ -2,30 +2,44 @@
 
 A JavaScript data library.
 
+## Installing
+
+Currently, the easiest and only documented way to install this library is through [jspm](http://jspm.io/), so you 
+must first install that tool globally by executing
+```shell
+npm install -g jspm
+```
+Then run
+```shell
+jspm install npm:bt-data
+```
+
 ## Building The Code
 
-The source code of this library is written in [TypeScript](http://www.typescriptlang.org/), and then compiled into
-JavaScript. To work with the source code and build it, follow the following steps:
+The source code of this library is written in [TypeScript](http://www.typescriptlang.org/). 
+To build this library from source code, follow these steps:
 
-1. First, make sure you have [NodeJS](http://nodejs.org/) installed. This is the *de facto* platform for working with
+1. Clone the library repository or download the source code from [here](github.com/black-tree/data).
+
+2. Then make sure you have [NodeJS](http://nodejs.org/) installed. This is the *de facto* platform for working with
 JavaScript projects.
-2. Open a terminal, change the directory to the project root directory and execute the following instruction
+3. Open a terminal, change the directory to the project root directory and execute the following instruction
 
   ```shell
   npm install
   ```
-3. Make sure that [Gulp](http://gulpjs.com/) is installed. If you do not have it, run the following command 
+4. Make sure that [Gulp](http://gulpjs.com/) is installed. If you do not have it, run the following command 
 in a terminal:
 
   ```shell
   npm install -g gulp
   ```
-4. Build the code executing
+5. Build the code executing
 
   ```shell
   gulp build
   ```
-5. By configuration, the output is placed in the `dist/` directory, available in the form of AMD modules, or as configured
+6. By configuration, the output is placed in the `dist/` directory, available in the form of AMD modules, or as configured
 in the `tsconfig.json` file.
 
 ## Running The Tests
