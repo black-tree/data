@@ -1,9 +1,7 @@
 import {Metadata, MetadataDefinition, createMetadata} from "./metadata";
 import {ModelData} from "./model-data";
 import {Field} from "../field/field";
-import {IEventDispatcher} from "wg-events";
-import {IEvent} from "wg-events";
-import {EventManager} from "wg-events";
+import {IEventDispatcher, IEvent, EventManager} from "wg-events";
 
 export interface ModelPrototype {
 
